@@ -1,0 +1,198 @@
+body{
+    background-color:#735D5D
+}
+
+.meal {
+    background-color: white;
+    box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+    border-radius: 11px;
+    overflow: hidden;
+    transition: all 0.4s;
+    margin: 50px auto 0;
+    width: 600px;
+    height: auto;
+}
+
+.meal:hover {
+    transform: translateY(-1.2rem);
+    box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
+}
+
+.meal-content {
+    padding: 3.2rem 4.8rem 4.8rem 4.8rem;
+}
+
+.meal-title {
+    font-size: 2.4rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 3.2rem;
+}
+
+.meal-attributes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.meal-attribute {
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+}
+
+.meal-icon {
+    height: 2.4rem;
+    width: 2.4rem;
+    color: #e67e22;
+}
+
+.meal-img {
+    width: 100%;
+    height: 350.15px;
+    object-fit: cover;
+}
+#Ramen {
+    position: fixed;
+    width: 417px;
+    height: 370px;
+    bottom: 3.5%;
+    margin-left: 30px;
+//border: 1px solid black;
+}
+
+#Ramen2 {
+    position: fixed;
+    width: 417px;
+    height: 370px;
+    bottom: 3.5%;
+    margin-left: 73%;
+//border: 1px solid black;
+}
+
+.Shadow {
+    opacity: 0.2;
+    fill: url(#Shadow);
+    position: absolute;
+    width: 417px;
+    height: 74px;
+    top: 258px;
+}
+.bowlShadow {
+    opacity: 0.3;
+    fill: url(#bowlShadow);
+    position: absolute;
+    width: 218px;
+    height: 33px;
+    left: 104px;
+    top: 337px;
+}
+.bowlBase {
+    fill: url(#bowlBase);
+    position: absolute;
+    width: 66px;
+    height: 20px;
+    left: 177px;
+    top: 337px;
+}
+.bowlInside {
+    fill: url(#bowlInside);
+    position: absolute;
+    width: 240px;
+    height: 56px;
+    left: 90px;
+    top: 209px;
+}
+.Soup {
+    fill: rgba(119,62,12,0.5);
+    position: absolute;
+    width: 224px;
+    height: 40px;
+    left: 98px;
+    top: 233px;
+}
+.Noodles {
+    fill: rgba(191,168,58,0.7);
+    position: absolute;
+    width: 164px;
+    height: 32px;
+    left: 126px;
+    top: 240px;
+}
+.noodleOne {
+    fill: url(#noodleOne);
+    stroke: rgba(112,112,112,0);
+    stroke-width: 1px;
+    position: absolute;
+    width: 168px;
+    height: 25px;
+    left: 122px;
+    top: 240px;
+}
+.noodleTwo {
+    fill: url(#noodleTwo);
+    stroke: rgba(112,112,112,0.09);
+    stroke-width: 1px;
+    position: absolute;
+    width: 160px;
+    height: 24px;
+    transform: translate(-6px, -63px) matrix(1,0,0,1,151,309) rotate(-3deg);
+    transform-origin: center;
+}
+.noodleThree {
+    fill: url(#noodleThree);
+    stroke: rgba(112,112,112,0);
+    stroke-width: 1px;
+    position: absolute;
+    width: 176px;
+    height: 24px;
+    transform: translate(-6px, -63px) matrix(1,0,0,1,111,316) rotate(8deg);
+    transform-origin: center;
+}
+.bowlMain {
+    fill: url(#bowlMain);
+    position: absolute;
+    width: 240px;
+    height: 112px;
+    left: 90px;
+    top: 233px;
+}
+.Rim {
+    fill: transparent;
+    stroke: rgba(223,219,210,1);
+    stroke-width: 2px;
+    position: absolute;
+    width: 240px;
+    height: 56px;
+    left: 90px;
+    top: 208px;
+}
+.Steam {
+    opacity: 0.4;
+    fill: url(#Steam);
+    position: absolute;
+    width: 150px;
+    height: 250px;
+    left: 136.269px;
+    top:-10px;
+    animation: steam 3s infinite;
+}
+.steamContainer{
+    animation: steamRise 4s infinite;
+//border: 4px solid black;
+    position: absolute;
+    height: 250px;
+    width: 150px;
+}
+@keyframes steam {
+    50% {transform: skewX(10deg);
+        opacity: 0.2;}
+}
+@keyframes steamRise {
+    0% { top:20px;left: 0px;}
+    50% {top:0px; left: -10px;}
+    100%{top:20px; left:0px;}
+}
+
