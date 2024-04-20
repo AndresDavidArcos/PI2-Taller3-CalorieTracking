@@ -5,28 +5,69 @@
     <title>Calorie Tracking</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.1.2/css/ionicons.min.css">
+    <style>
+        #box {
+          width: 300px; /* Cambiar el ancho del box */
+          height: 300px; /* Cambiar la altura del box */
+          border: 2px dashed #ff0000; /* Cambiar el color del borde */
+          background-color: #f0f0f0; /* Cambiar el color de fondo */
+          text-align: center;
+          margin: 20px auto;
+          overflow: hidden; /* Para recortar la imagen si es más grande que el box */
+        }
+        #box img {
+          max-width: 100%; /* La imagen se ajustará al ancho máximo del box */
+          max-height: 100%; /* La imagen se ajustará al alto máximo del box */
+        }
+      </style>
+      
 </head>
 <body>
-<div class="meal">
-    <img
-            src="https://github.com/erenburuk/html-css-course/blob/1aacbb283eed0f760ab9f905e4ad5099cfa11204/07-Omnifood-Desktop/img/meals/meal-1.jpg?raw=true"
-            class="meal-img"
-            alt="Japanese Gyozas"
-    />
-    <div class="meal-content">
-        <p class="meal-title">Japanese Gyozas</p>
-        <ul class="meal-attributes">
-            <li class="meal-attribute">
-                <ion-icon class="meal-icon" name="flame-outline"></ion-icon
-                ><span><strong>650</strong> calories</span>
-            </li>
-            <li class="meal-attribute">
-                <ion-icon class="meal-icon" name="restaurant-outline"></ion-icon
-                ><span>Ingrediente #1 - <strong>74</strong> Calorias</span>
-            </li>
-        </ul>
+    <div class="meal">
+        <div id="box" ondrop="drop(event)" ondragover="allowDrop(event)">
+            Arrastra una imagen aquí
+        </div>
+    
+        <div class="meal-content">
+            <p class="meal-title">Japanese Gyozas</p>
+            <ul class="meal-attributes">
+                <li class="meal-attribute">
+                    <ion-icon class="meal-icon" name="flame-outline"></ion-icon
+                    ><span><strong>650</strong> calories</span>
+                </li>
+                <li class="meal-attribute">
+                    <ion-icon class="meal-icon" name="restaurant-outline"></ion-icon
+                    ><span>Ingrediente #1 - <strong>74</strong> Calorias</span>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
+    
+    <script>
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+    
+    function drop(event) {
+      event.preventDefault();
+      var files = event.dataTransfer.files;
+      
+      // Solo permitimos el arrastre de un archivo de imagen
+      if (files.length === 1 && files[0].type.startsWith('image/')) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var img = document.createElement('img');
+          img.src = e.target.result;
+          document.getElementById('box').innerHTML = ''; // Limpiamos el contenido actual
+          document.getElementById('box').appendChild(img);
+        };
+        reader.readAsDataURL(files[0]);
+      } else {
+        alert('Por favor, arrastra solo una imagen');
+      }
+    }
+    </script>
+    
 
 <div id="Ramen">
     <svg class="Shadow">
