@@ -1,0 +1,18 @@
+{
+  "name": "pi2-taller3-calorietracking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/cognitiveservices-computervision": "^8.2.0",
+    "async": "^3.2.5",
+    "dotenv": "^16.4.5",
+    "ms-rest-azure": "^3.0.2"
+  }
+}
