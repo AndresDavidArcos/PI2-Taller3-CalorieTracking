@@ -1,3 +1,5 @@
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
 const button = document.getElementById('calculate');
 button.addEventListener('click', sendImageAndCalculateCalories);
 
@@ -31,9 +33,6 @@ function calculateCalories() {
         method: 'POST',
     })
         .then(response => response.json())
-        .then(data => {
-            return data;
-        })
         .catch(error => {
             console.error('Error calculating calories:', error);
             throw error;
@@ -46,29 +45,31 @@ function sendImageAndCalculateCalories() {
     loadImageBlob(img.src)
         .then(imageBlob => sendImageToServer(imageBlob))
         .then(() => calculateCalories())
-        .then(data => showCalories())
-        .then(data => {
-            // console.log(data);
-        })
+        .then(data => showCalories(data)) // Pass data to showCalories function
         .catch(error => {
             console.error('Error:', error);
         });
 }
 
+function showCalories(data) {
+    // console.log("Printing data:", data.data);
 
-function showCalories() {
+    async function run() {
 
-    console.log("imprimiendo gemini", data)
-    // fetch('http://localhost:8081/calorietracking/askgemini', {
-    //     method: 'POST',
-    //     body: JSON.stringify({ text: text }),
-    // })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         console.log(data);
-    //         // sendImageAndCalculateCalories();
-    //     })
-    //     .catch(error => {
-    //         console.error('Error:', error);
-    //     });
+        const genAI = new GoogleGenerativeAI("AIzaSyD_3UsseiVPzZAQlC0khCb1YRPmCfa_5C4");
+
+        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+        const chat = model.startChat();
+
+        const prompt = "I want you to simulate the ingredients and aprox calories of the following food: " + data.data + ". Answer with the following format: Ingredient1 : Calories1, Ingredient2 : Calories2, ...";
+
+        const result = await chat.sendMessage(prompt);
+
+        const response = result.response;
+        const text = await response.text();
+        console.log(text);
+    }
+
+    run();
 }
