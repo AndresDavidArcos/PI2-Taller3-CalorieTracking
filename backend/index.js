@@ -12,7 +12,7 @@ app.use(express.json());
 app.set("port", "8081");
 
 //rutas
-app.use("/calorietracking", require("./routes/calculate"), require("./routes/files"));
+app.use("/calorietracking", require("./routes/calculate"), require("./routes/files"), require("./routes/calories"));
 
 
 app.listen(app.get("port"), () => {

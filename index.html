@@ -97,50 +97,7 @@
             }
         }
     </script>
-    <script type="module">
-
-        const button = document.getElementById('calculate');
-        button.addEventListener('click', sendImageToServer);
-
-        function sendImageToServer() {
-            var img = document.getElementById('box').getElementsByTagName('img')[0];
-
-            fetch(img.src)
-                .then(response => response.blob())
-                .then(imageBlob => {
-                    const image = new Blob([imageBlob], { type: 'image/jpeg' });
-
-                    const formData = new FormData();
-                    formData.append('imagen', image);
-
-                    fetch('http://localhost:8081/calorietracking/subirarchivo', {
-                        method: 'POST',
-                        body: formData
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-
-                            fetch('http://localhost:8081/calorietracking/calculatecalories', {
-                                method: 'POST',
-                            })
-                                .then(response => response.json())
-                                .then(data => {
-                                    console.log(data);
-                                })
-                                .catch(error => {
-                                    console.error('Error:', error);
-                                });
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
-
-                })
-                .catch(error => {
-                    console.error('Error fetching image:', error);
-                });
-        }
-    </script>
+    <script type="module" src="script.js"></script>
     <div id="Ramen">
         <svg class="Shadow">
             <radialGradient id="Shadow">

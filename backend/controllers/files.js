@@ -15,7 +15,6 @@ module.exports = {
     async uploadFile(req, res) {
         try {
             const file = req.file.buffer;
-            console.log(req.file);
             const blobName = 'imagen.jpg';
             const blockBlobClient = containerClient.getBlockBlobClient(blobName);
             await blockBlobClient.uploadData(file);
