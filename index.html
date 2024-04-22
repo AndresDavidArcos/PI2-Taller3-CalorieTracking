@@ -105,19 +105,39 @@
         function sendImageToServer() {
             var img = document.getElementById('box').getElementsByTagName('img')[0];
 
-            const formData = new FormData();
-            // formData.append('image', img);
+            fetch(img.src)
+                .then(response => response.blob())
+                .then(imageBlob => {
+                    const image = new Blob([imageBlob], { type: 'image/jpeg' });
 
-            fetch('http://localhost:8081/calorietracking/calculatecalories', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
+                    const formData = new FormData();
+                    formData.append('imagen', image);
+
+                    fetch('http://localhost:8081/calorietracking/subirarchivo', {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            fetch('http://localhost:8081/calorietracking/calculatecalories', {
+                                method: 'POST',
+                                body: formData
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log(data);
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                });
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+
                 })
                 .catch(error => {
-                    console.error('Error:', error);
+                    console.error('Error fetching image:', error);
                 });
         }
     </script>
