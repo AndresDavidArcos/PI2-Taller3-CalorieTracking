@@ -119,9 +119,9 @@
                     })
                         .then(response => response.json())
                         .then(data => {
+
                             fetch('http://localhost:8081/calorietracking/calculatecalories', {
                                 method: 'POST',
-                                body: formData
                             })
                                 .then(response => response.json())
                                 .then(data => {

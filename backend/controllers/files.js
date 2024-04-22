@@ -1,5 +1,6 @@
 const { BlobServiceClient } = require('@azure/storage-blob');
 const axios = require('axios');
+const { response } = require('../routes/calculate');
 
 // Load the .env file if it exists
 require("dotenv").config();
@@ -18,7 +19,7 @@ module.exports = {
             const blobName = 'imagen.jpg';
             const blockBlobClient = containerClient.getBlockBlobClient(blobName);
             await blockBlobClient.uploadData(file);
-            res.status(200).json({ message: 'File uploaded successfully', data: "hola" });
+            res.status(200).json({ message: 'File uploaded successfully', data: response.data });
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Internal Server Error' });

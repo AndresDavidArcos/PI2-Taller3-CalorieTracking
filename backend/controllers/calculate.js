@@ -20,11 +20,7 @@ module.exports = {
     async calculate(req, res) {
 
         try {
-            // if (!req.body.url) {
-            //     return res.status(400).json({ error: 'url is required' });
-            // }
-
-            const url = 'https://learn.microsoft.com/azure/ai-services/computer-vision/media/quickstarts/presentation.png';
+            const url = "https://calorietracking.blob.core.windows.net/calorietracking/imagen.jpg";
 
             const result = await client.path('/imageanalysis:analyze').post({
                 body: {
