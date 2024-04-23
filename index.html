@@ -107,11 +107,6 @@
     </div>
 
     <script>
-        // Listener para el botón de seleccionar imagen
-        document.getElementById('select').addEventListener('click', function() {
-            document.getElementById('fileInput').click();
-        });
-
         // Adjuntar el evento onchange dinámicamente
         document.getElementById('fileInput').addEventListener('change', function(event) {
             handleFileSelect(event);
