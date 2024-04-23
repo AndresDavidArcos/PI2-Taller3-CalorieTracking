@@ -48,6 +48,17 @@
             text-align: center;
             font-size: 16px;
         }
+
+        #reset {
+            background-color: #735D5D;
+            /* Green */
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: none;
+            font-size: 16px;
+        }
     </style>
 
 </head>
@@ -60,32 +71,52 @@
 
         <!-- Botón para cargar imagen desde la biblioteca del equipo -->
         <div style="text-align: center; margin-top: 10px;">
-            <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
             <label for="fileInput">
                 <button id="select" style="cursor: pointer;">Seleccionar imagen desde la biblioteca</button>
             </label>
         </div>
-        
+
         <div style="margin-top: 10px;"></div>
 
+        <!-- Botón para calcular calorías -->
         <div style="display: flex; justify-content: center;">
-            <button id="calculate">
+            <button id="calculate" style="display: none;">
                 Calcular Calorias
             </button>
         </div>
 
+        <div style="margin-top: 10px;"></div>
+
+        <!-- Botón para cargar nueva imagen -->
+        <div style="display: flex; justify-content: center;">
+            <button id="reset" onclick="resetPage()">
+                Cargar nueva imagen
+            </button>
+        </div>
+
         <div class="meal-content">
-            <p class="meal-title"></p>
+            <p id="title" class="meal-title"></p>
             <ul class="meal-attributes">
                 <li class="meal-attribute">
                     <ion-icon class="meal-icon" name="restaurant-outline"></ion-icon>
-                    <p>Ingredients:</p>
+                    <p id="ingredient-text">Ingredients:</p>
                 </li>
             </ul>
         </div>
     </div>
 
     <script>
+        // Listener para el botón de seleccionar imagen
+        document.getElementById('select').addEventListener('click', function() {
+            document.getElementById('fileInput').click();
+        });
+
+        // Adjuntar el evento onchange dinámicamente
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            handleFileSelect(event);
+        });
+
         function allowDrop(event) {
             event.preventDefault();
         }
@@ -105,14 +136,16 @@
                 };
                 reader.readAsDataURL(files[0]);
                 document.getElementById('calculate').style.display = 'inline-block';
+                document.getElementById('reset').style.display = 'inline-block';
             } else {
                 alert('Por favor, arrastra solo una imagen');
             }
         }
 
+        // Función para manejar la selección de archivo
         function handleFileSelect(event) {
             var files = event.target.files;
-    
+            
             if (files.length === 1 && files[0].type.startsWith('image/')) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
@@ -123,9 +156,19 @@
                 };
                 reader.readAsDataURL(files[0]);
                 document.getElementById('calculate').style.display = 'inline-block';
+                document.getElementById('reset').style.display = 'inline-block';
             } else {
                 alert('Por favor, selecciona solo una imagen');
             }
+        }
+
+        // Función para restablecer la página a su estado inicial
+        function resetPage() {
+            document.getElementById('box').innerHTML = 'Arrastra una imagen aquí';
+            document.getElementById('calculate').style.display = 'none';
+            document.getElementById('reset').style.display = 'none';
+            document.getElementById('ingredient-text').innerText = 'Ingredients:';
+            document.getElementById('title').innerText = '';
         }
     </script>
     <script type="importmap">
