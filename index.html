@@ -39,7 +39,15 @@
             text-decoration: none;
             display: none;
             font-size: 16px;
+        }
 
+        #select {
+            background-color: #735D5D;
+            /* Green */
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            font-size: 16px;
         }
     </style>
 
@@ -96,6 +104,24 @@
                 document.getElementById('calculate').style.display = 'inline-block';
             } else {
                 alert('Por favor, arrastra solo una imagen');
+            }
+        }
+
+        function handleFileSelect(event) {
+            var files = event.target.files;
+    
+            if (files.length === 1 && files[0].type.startsWith('image/')) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var img = document.createElement('img');
+                    img.src = e.target.result;
+                    document.getElementById('box').innerHTML = ''; // Limpiamos el contenido actual
+                    document.getElementById('box').appendChild(img);
+                };
+                reader.readAsDataURL(files[0]);
+                document.getElementById('calculate').style.display = 'inline-block';
+            } else {
+                alert('Por favor, selecciona solo una imagen');
             }
         }
     </script>
