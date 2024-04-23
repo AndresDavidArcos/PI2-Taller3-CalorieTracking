@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calorie Tracking</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.1.2/css/ionicons.min.css">
+    <style>
+        #box {
+            width: 300px;
+            /* Cambiar el ancho del box */
+            height: 300px;
+            /* Cambiar la altura del box */
+            border: 2px dashed #ff0000;
+            /* Cambiar el color del borde */
+            background-color: #f0f0f0;
+            /* Cambiar el color de fondo */
+            text-align: center;
+            margin: 20px auto;
+            overflow: hidden;
+            /* Para recortar la imagen si es más grande que el box */
+        }
+
+        #box img {
+            max-width: 100%;
+            /* La imagen se ajustará al ancho máximo del box */
+            max-height: 100%;
+            /* La imagen se ajustará al alto máximo del box */
+        }
+
+        #calculate {
+            background-color: #735D5D;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: none;
+            font-size: 16px;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="meal">
+        <div id="box" ondrop="drop(event)" ondragover="allowDrop(event)">
+            Arrastra una imagen aquí
+        </div>
+
+        <div style="display: flex; justify-content: center;">
+            <button id="calculate">
+                Calcular Calorias
+            </button>
+        </div>
+
+        <div class="meal-content">
+            <p class="meal-title"></p>
+            <ul class="meal-attributes">
+                <li class="meal-attribute">
+                    <ion-icon class="meal-icon" name="restaurant-outline"></ion-icon>
+                    <p>Ingredients:</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            var files = event.dataTransfer.files;
+
+            // Solo permitimos el arrastre de un archivo de imagen
+            if (files.length === 1 && files[0].type.startsWith('image/')) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var img = document.createElement('img');
+                    img.src = e.target.result;
+                    document.getElementById('box').innerHTML = ''; // Limpiamos el contenido actual
+                    document.getElementById('box').appendChild(img);
+                };
+                reader.readAsDataURL(files[0]);
+                document.getElementById('calculate').style.display = 'inline-block';
+            } else {
+                alert('Por favor, arrastra solo una imagen');
+            }
+        }
+    </script>
+    <script type="importmap">
+            {
+              "imports": {
+                "@google/generative-ai": "https://esm.run/@google/generative-ai"
+              }
+            }
+        </script>
+    <script type="module" src="script.js"></script>
+    <div id="Ramen">
+        <svg class="Shadow">
+            <radialGradient id="Shadow">
+                <stop offset="0" stop-color="#000" stop-opacity="1"></stop>
+                <stop offset="1" stop-color="#000" stop-opacity="0"></stop>
+            </radialGradient>
+            <ellipse id="Shadow" rx="208" ry="37" cx="208" cy="37">
+            </ellipse>
+        </svg>
+        <svg class="bowlShadow">
+            <radialGradient id="bowlShadow">
+                <stop offset="0" stop-color="#000" stop-opacity="1"></stop>
+                <stop offset="1" stop-color="#000" stop-opacity="0"></stop>
+            </radialGradient>
+            <ellipse id="bowlShadow" rx="109" ry="17" cx="109" cy="17">
+            </ellipse>
+        </svg>
+        <svg class="bowlBase" viewBox="-0.7 0 66 20">
+            <radialGradient id="bowlBase">
+                <stop offset="0" stop-color="#aca08b" stop-opacity="1"></stop>
+                <stop offset="0.5" stop-color="#685e4a" stop-opacity="1"></stop>
+                <stop offset="1" stop-color="#4f4635" stop-opacity="1"></stop>
+            </radialGradient>
+            <path id="bowlBase"
+                d="M 0 0 L 64 0 C 64 0 66 14 64 15 C 62 16 48 20 32 20 C 16 20 1.5 17 0 15 C -1.5 14 0 0 0 0 Z">
+            </path>
+        </svg>
+        <svg class="bowlInside">
+            <radialGradient id="bowlInside">
+                <stop offset="0" stop-color="#fff" stop-opacity="1"></stop>
+                <stop offset="0.5" stop-color="#d8d2c5" stop-opacity="1"></stop>
+                <stop offset="1" stop-color="#655b47" stop-opacity="1"></stop>
+            </radialGradient>
+            <ellipse id="bowlInside" rx="120" ry="28" cx="120" cy="28">
+            </ellipse>
+        </svg>
+        <svg class="Soup">
+            <ellipse id="Soup" rx="112" ry="20" cx="112" cy="20">
+            </ellipse>
+        </svg>
+        <svg class="Noodles">
+            <ellipse id="Noodles" rx="82" ry="16" cx="82" cy="16">
+            </ellipse>
+        </svg>
+        <svg class="noodleOne" viewBox="196 254 168 24">
+            <linearGradient id="noodleOne">
+                <stop offset="0" stop-color="#ffeb6e" stop-opacity="1"></stop>
+                <stop offset="0.25" stop-color="#ffeb6e" stop-opacity="1"></stop>
+                <stop offset="0.35" stop-color="#c3ac3e" stop-opacity="1"></stop>
+                <stop offset="1" stop-color="#988116" stop-opacity="1"></stop>
+            </linearGradient>
+            <path id="noodleOne"
+                d="M 196 270 C 196 270 234 252 276 254 C 318 256 364 278 364 278 C 364 278 318 264 276 262 C 234 260 196 270 196 270 Z">
+            </path>
+        </svg>
+        <svg class="noodleTwo" viewBox="196 254 161 24">
+            <linearGradient id="noodleTwo" spreadMethod="pad" x1="0.5" x2="0.5" y1="-0.2" y2="1">
+                <stop offset="0" stop-color="#ffeb6e" stop-opacity="1"></stop>
+                <stop offset="0.25" stop-color="#ffeb6e" stop-opacity="1"></stop>
+                <stop offset="0.35" stop-color="#c3ac3e" stop-opacity="1"></stop>
+                <stop offset="1" stop-color="#988116" stop-opacity="1"></stop>
+            </linearGradient>
+            <path id="noodleTwo"
+                d="M 357 270 C 357 270 320 252 280 254 C 240 256 196 278 196 278 C 196 278 240 264 280 262 C 320 260 357 270 357 270 Z">
+            </path>
+        </svg>
+        <svg class="noodleThree" viewBox="196 254 176 24">
+            <linearGradient id="noodleThree" x1="0.5" x2="0.5" y1="-0.2" y2="1">
+                <stop offset="0" stop-color="#ffeb6e" stop-opacity="1"></stop>
+                <stop offset="0.3131" stop-color="#ffeb6e" stop-opacity="1"></stop>
+                <stop offset="0.3962" stop-color="#c3ac3e" stop-opacity="1"></stop>
+                <stop offset="1" stop-color="#988116" stop-opacity="1"></stop>
+            </linearGradient>
+            <path id="noodleThree"
+                d="M 372 270 C 372 270 332 252 288 254 C 244 256 196 278 196 278 C 196 278 244 264 288 262 C 332 260 372 270 372 270 Z">
+            </path>
+        </svg>
+        <svg class="bowlMain" viewBox="164 246 240 112">
+            <radialGradient id="bowlMain">
+                <stop offset="0" stop-color="#fefefe" stop-opacity="1"></stop>
+                <stop offset="0.1" stop-color="#e0dacd" stop-opacity="1"></stop>
+                <stop offset="1" stop-color="#655b47" stop-opacity="1"></stop>
+            </radialGradient>
+            <path id="bowlMain"
+                d="M 164 246 C 164 246 172 358 284 358 C 396 358 404 246 404 246 C 404 246 405 252 397 258 C 385 267 354 277 284 277 C 270 278 261 277 246 276 C 198 272 178 264 169 256 C 163 251 164 246 164 246 Z">
+            </path>
+        </svg>
+        <svg class="Rim">
+            <ellipse id="Rim" rx="120" ry="28" cx="120" cy="28">
+            </ellipse>
+        </svg>
+        <div class="steamContainer">
+            <svg class="Steam" viewBox="210 13 154 250">
+                <linearGradient id="Steam" x1="0.6" x2="0.5" y1="0" y2="1">
+                    <stop offset="0" stop-color="#fff" stop-opacity="0"></stop>
+                    <stop offset="1" stop-color="#fff" stop-opacity="1"></stop>
+                </linearGradient>
+                <path id="Steam"
+                    d="M 228 246 C 210 228 208 220 212 190 C 216 160 222 154 244 126 C 266 98 288 90 308 62 C 328 34 312 20 324 14 C 336 8 334 56 332 86 C 330 116 310 112 316 134 C 322 156 338 152 348 174 C 358 196 364 194 364 214 C 364 234 366 244 348 254 C 330 264 314 264 284 262 C 254 260 246 264 228 246 Z">
+                </path>
+            </svg>
+        </div>
+    </div>
+    <div id="Ramen2">
+        <svg class="Shadow">
+            <radialGradient id="Shadow">
+                <stop offset="0" stop-color="#000" stop-opacity="1"></stop>
+                <stop offset="1" stop-color="#000" stop-opacity="0"></stop>
+            </radialGradient>
+            <ellipse id="Shadow" rx="208" ry="37" cx="208" cy="37">
+            </ellipse>
+        </svg>
+        <svg class="bowlShadow">
+            <radialGradient id="bowlShadow">
+                <stop offset="0" stop-color="#000" stop-opacity="1"></stop>
+                <stop offset="1" stop-color="#000" stop-opacity="0"></stop>
+            </radialGradient>
+            <ellipse id="bowlShadow" rx="109" ry="17" cx="109" cy="17">
+            </ellipse>
+        </svg>
+        <svg class="bowlBase" viewBox="-0.7 0 66 20">
+            <radialGradient id="bowlBase">
+                <stop offset="0" stop-color="#aca08b" stop-opacity="1"></stop>
+                <stop offset="0.5" stop-color="#685e4a" stop-opacity="1"></stop>
+                <stop offset="1" stop-color="#4f4635" stop-opacity="1"></stop>
+            </radialGradient>
+            <path id="bowlBase"
+                d="M 0 0 L 64 0 C 64 0 66 14 64 15 C 62 16 48 20 32 20 C 16 20 1.5 17 0 15 C -1.5 14 0 0 0 0 Z">
+            </path>
+        </svg>
+        <svg class="bowlInside">
+            <radialGradient id="bowlInside">
+                <stop offset="0" stop-color="#fff" stop-opacity="1"></stop>
+                <stop offset="0.5" stop-color="#d8d2c5" stop-opacity="1"></stop>
+                <stop offset="1" stop-color="#655b47" stop-opacity="1"></stop>
+            </radialGradient>
+            <ellipse id="bowlInside" rx="120" ry="28" cx="120" cy="28">
+            </ellipse>
+        </svg>
+        <svg class="Soup">
+            <ellipse id="Soup" rx="112" ry="20" cx="112" cy="20">
+            </ellipse>
+        </svg>
+        <svg class="Noodles">
+            <ellipse id="Noodles" rx="82" ry="16" cx="82" cy="16">
+            </ellipse>
+        </svg>
+        <svg class="noodleOne" viewBox="196 254 168 24">
+            <linearGradient id="noodleOne">
+                <stop offset="0" stop-color="#ffeb6e" stop-opacity="1"></stop>
+                <stop offset="0.25" stop-color="#ffeb6e" stop-opacity="1"></stop>
+                <stop offset="0.35" stop-color="#c3ac3e" stop-opacity="1"></stop>
+                <stop offset="1" stop-color="#988116" stop-opacity="1"></stop>
+            </linearGradient>
+            <path id="noodleOne"
+                d="M 196 270 C 196 270 234 252 276 254 C 318 256 364 278 364 278 C 364 278 318 264 276 262 C 234 260 196 270 196 270 Z">
+            </path>
+        </svg>
+        <svg class="noodleTwo" viewBox="196 254 161 24">
+            <linearGradient id="noodleTwo" spreadMethod="pad" x1="0.5" x2="0.5" y1="-0.2" y2="1">
+                <stop offset="0" stop-color="#ffeb6e" stop-opacity="1"></stop>
+                <stop offset="0.25" stop-color="#ffeb6e" stop-opacity="1"></stop>
+                <stop offset="0.35" stop-color="#c3ac3e" stop-opacity="1"></stop>
+                <stop offset="1" stop-color="#988116" stop-opacity="1"></stop>
+            </linearGradient>
+            <path id="noodleTwo"
+                d="M 357 270 C 357 270 320 252 280 254 C 240 256 196 278 196 278 C 196 278 240 264 280 262 C 320 260 357 270 357 270 Z">
+            </path>
+        </svg>
+        <svg class="noodleThree" viewBox="196 254 176 24">
+            <linearGradient id="noodleThree" x1="0.5" x2="0.5" y1="-0.2" y2="1">
+                <stop offset="0" stop-color="#ffeb6e" stop-opacity="1"></stop>
+                <stop offset="0.3131" stop-color="#ffeb6e" stop-opacity="1"></stop>
+                <stop offset="0.3962" stop-color="#c3ac3e" stop-opacity="1"></stop>
+                <stop offset="1" stop-color="#988116" stop-opacity="1"></stop>
+            </linearGradient>
+            <path id="noodleThree"
+                d="M 372 270 C 372 270 332 252 288 254 C 244 256 196 278 196 278 C 196 278 244 264 288 262 C 332 260 372 270 372 270 Z">
+            </path>
+        </svg>
+        <svg class="bowlMain" viewBox="164 246 240 112">
+            <radialGradient id="bowlMain">
+                <stop offset="0" stop-color="#fefefe" stop-opacity="1"></stop>
+                <stop offset="0.1" stop-color="#e0dacd" stop-opacity="1"></stop>
+                <stop offset="1" stop-color="#655b47" stop-opacity="1"></stop>
+            </radialGradient>
+            <path id="bowlMain"
+                d="M 164 246 C 164 246 172 358 284 358 C 396 358 404 246 404 246 C 404 246 405 252 397 258 C 385 267 354 277 284 277 C 270 278 261 277 246 276 C 198 272 178 264 169 256 C 163 251 164 246 164 246 Z">
+            </path>
+        </svg>
+        <svg class="Rim">
+            <ellipse id="Rim" rx="120" ry="28" cx="120" cy="28">
+            </ellipse>
+        </svg>
+        <div class="steamContainer">
+            <svg class="Steam" viewBox="210 13 154 250">
+                <linearGradient id="Steam" x1="0.6" x2="0.5" y1="0" y2="1">
+                    <stop offset="0" stop-color="#fff" stop-opacity="0"></stop>
+                    <stop offset="1" stop-color="#fff" stop-opacity="1"></stop>
+                </linearGradient>
+                <path id="Steam"
+                    d="M 228 246 C 210 228 208 220 212 190 C 216 160 222 154 244 126 C 266 98 288 90 308 62 C 328 34 312 20 324 14 C 336 8 334 56 332 86 C 330 116 310 112 316 134 C 322 156 338 152 348 174 C 358 196 364 194 364 214 C 364 234 366 244 348 254 C 330 264 314 264 284 262 C 254 260 246 264 228 246 Z">
+                </path>
+            </svg>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
