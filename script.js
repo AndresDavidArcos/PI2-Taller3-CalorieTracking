@@ -98,3 +98,21 @@ function showCalories(data) {
 
     run();
 }
+
+function handleFileSelect(event) {
+    var files = event.target.files;
+    
+    if (files.length === 1 && files[0].type.startsWith('image/')) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var img = document.createElement('img');
+            img.src = e.target.result;
+            document.getElementById('box').innerHTML = ''; // Limpiamos el contenido actual
+            document.getElementById('box').appendChild(img);
+        };
+        reader.readAsDataURL(files[0]);
+        document.getElementById('calculate').style.display = 'inline-block';
+    } else {
+        alert('Por favor, selecciona solo una imagen');
+    }
+}

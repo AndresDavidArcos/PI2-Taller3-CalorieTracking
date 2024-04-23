@@ -51,6 +51,12 @@
             Arrastra una imagen aquí
         </div>
 
+        <!-- Botón para cargar imagen desde la biblioteca del equipo -->
+        <div style="text-align: center; margin-top: 10px;">
+            <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
+            <label for="fileInput" style="cursor: pointer;">Seleccionar imagen desde la biblioteca</label>
+        </div>
+
         <div style="display: flex; justify-content: center;">
             <button id="calculate">
                 Calcular Calorias
