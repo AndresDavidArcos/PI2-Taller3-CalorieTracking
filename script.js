@@ -62,13 +62,38 @@ function showCalories(data) {
 
         const chat = model.startChat();
 
-        const prompt = "I want you to simulate the ingredients and aprox calories of the following food: " + data.data + ". Answer with the following format: Ingredient1 : Calories1, Ingredient2 : Calories2, ...";
+        const prompt = "I want you to simulate the ingredients and aprox calories of the following food: " + data.data + ". Answer with the following format: Ingredient1: Calories1; " +
+            "\nIngredient2: Calories2;" +
+            "\nIngredient3: Calories3;...";
 
         const result = await chat.sendMessage(prompt);
 
         const response = result.response;
         const text = await response.text();
         console.log(text);
+
+        const lines = text.split('\n');
+
+        console.log(lines);
+
+        const mealTitleElement = document.querySelector('.meal-title');
+
+        const capitalizedText = data.data.charAt(0).toUpperCase() + data.data.slice(1);
+
+        mealTitleElement.textContent = capitalizedText;
+
+        const mealAttributeElement = document.querySelector('.meal-attribute:nth-child(1) p');
+
+        const ulElement = document.createElement('ul');
+
+        lines.forEach(line => {
+            const liElement = document.createElement('li');
+            liElement.textContent = line;
+            ulElement.appendChild(liElement);
+        });
+
+        mealAttributeElement.appendChild(ulElement);
+
     }
 
     run();
