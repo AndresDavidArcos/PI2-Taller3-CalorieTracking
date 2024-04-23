@@ -32,7 +32,6 @@
         #calculate {
             background-color: #735D5D;
             /* Green */
-            border: none;
             color: white;
             padding: 15px 32px;
             text-align: center;
@@ -62,8 +61,12 @@
         <!-- Botón para cargar imagen desde la biblioteca del equipo -->
         <div style="text-align: center; margin-top: 10px;">
             <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
-            <label for="fileInput" style="cursor: pointer;">Seleccionar imagen desde la biblioteca</label>
+            <label for="fileInput">
+                <button id="select" style="cursor: pointer;">Seleccionar imagen desde la biblioteca</button>
+            </label>
         </div>
+        
+        <div style="margin-top: 10px;"></div>
 
         <div style="display: flex; justify-content: center;">
             <button id="calculate">
